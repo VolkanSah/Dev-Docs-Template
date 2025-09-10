@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Docs Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        primary: {
+                            light: '#3b82f6',
+                            dark: '#2563eb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        pre {
+            background-color: #1e293b !important;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #1e293b;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            color: #f8fafc;
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-obsidian-900 text-obsidian-100 min-h-screen font-mono">
+    <div class="flex flex-col min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-obsidian-800 border-b border-obsidian-700 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="text-primary-500 font-bold text-xl">{ }</span>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <a href="#" class="bg-obsidian-700 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                                <a href="#getting-started" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Getting Started</a>
+                                <a href="#api-reference" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">API Reference</a>
+                                <a href="#examples" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Examples</a>
+                                <a href="#faq" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <button id="theme-toggle" class="p-2 rounded-md text-obsidian-300 hover:text-white hover:bg-obsidian-700 focus:outline-none">
+                                <i data-feather="moon"></i>
+                            </button>
+                        </div>
+                        <div class="ml-4 flex items-center md:ml-6">
+                            <a href="https://github.com/yourusername/yourrepo" target="_blank" class="p-2 rounded-md text-obsidian-300 hover:text-white hover:bg-obsidian-700 focus:outline-none">
+                                <i data-feather="github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden bg-obsidian-800 border-b border-obsidian-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="bg-obsidian-700 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#getting-started" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Getting Started</a>
+                <a href="#api-reference" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">API Reference</a>
+                <a href="#examples" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Examples</a>
+                <a href="#faq" class="text-obsidian-300 hover:bg-obsidian-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Hero Section -->
+                <section class="text-center py-12" data-aos="fade-up">
+                    <h1 class="text-4xl font-bold text-white mb-4">Project Documentation</h1>
+                    <p class="text-xl text-obsidian-300 max-w-3xl mx-auto">
+                        Comprehensive guide for developers to integrate and use this project effectively.
+                    </p>
+                    <div class="mt-8 flex justify-center space-x-4">
+                        <a href="#getting-started" class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-md font-medium transition duration-150">Get Started</a>
+                        <a href="https://github.com/yourusername/yourrepo" target="_blank" class="border border-obsidian-600 hover:bg-obsidian-700 text-white px-6 py-3 rounded-md font-medium transition duration-150">
+                            <span class="flex items-center">
+                                <i data-feather="github" class="mr-2"></i> View on GitHub
+                            </span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Getting Started -->
+                <section id="getting-started" class="py-12" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-white mb-6">Getting Started</h2>
+                    <div class="bg-obsidian-800 rounded-lg p-6 mb-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">Installation</h3>
+                        <div class="mb-4">
+                            <p class="text-obsidian-300 mb-2">Install via npm:</p>
+                            <pre class="text-obsidian-100"><code>npm install your-package</code></pre>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-obsidian-300 mb-2">Or via yarn:</p>
+                            <pre class="text-obsidian-100"><code>yarn add your-package</code></pre>
+                        </div>
+                        <div>
+                            <p class="text-obsidian-300 mb-2">Or include via CDN:</p>
+                            <pre class="text-obsidian-100"><code>&lt;script src="https://cdn.jsdelivr.net/npm/your-package@latest/dist/your-package.min.js"&gt;&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="bg-obsidian-800 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-4">Basic Usage</h3>
+                        <div class="mb-4">
+                            <p class="text-obsidian-300 mb-2">Import the package:</p>
+                            <pre class="text-obsidian-100"><code>import YourPackage from 'your-package';</code></pre>
+                        </div>
+                        <div>
+                            <p class="text-obsidian-300 mb-2">Initialize with default options:</p>
+                            <pre class="text-obsidian-100"><code>const instance = new YourPackage({
+    // options here
+});</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section id="api-reference" class="py-12" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-white mb-6">API Reference</h2>
+                    <div class="bg-obsidian-800 rounded-lg p-6 mb-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">Methods</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-medium text-white mb-2">.init(config)</h4>
+                                <p class="text-obsidian-300 mb-2">Initializes the package with the given configuration.</p>
+                                <div class="mb-2">
+                                    <span class="inline-block bg-obsidian-700 rounded px-2 py-1 text-xs font-semibold text-white mr-2">Parameters</span>
+                                    <span class="text-obsidian-300">config: Object - Configuration object</span>
+                                </div>
+                                <pre class="text-obsidian-100"><code>instance.init({
+    option1: true,
+    option2: 'value'
+});</code></pre>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-white mb-2">.destroy()</h4>
+                                <p class="text-obsidian-300 mb-2">Cleans up all event listeners and DOM modifications.</p>
+                                <pre class="text-obsidian-100"><code>instance.destroy();</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-obsidian-800 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-4">Options</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-obsidian-600">
+                                <thead class="bg-obsidian-700">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Option</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Type</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Default</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-obsidian-800 divide-y divide-obsidian-700">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">option1</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-obsidian-300">Boolean</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-obsidian-300">true</td>
+                                        <td class="px-6 py-4 text-sm text-obsidian-300">Enables feature X</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">option2</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-obsidian-300">String</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-obsidian-300">'default'</td>
+                                        <td class="px-6 py-4 text-sm text-obsidian-300">Sets the mode for feature Y</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Examples -->
+                <section id="examples" class="py-12" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-white mb-6">Examples</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-obsidian-800 rounded-lg p-6">
+                            <h3 class="text-xl font-semibold text-white mb-4">Basic Example</h3>
+                            <p class="text-obsidian-300 mb-4">A simple implementation with default options.</p>
+                            <pre class="text-obsidian-100"><code>const instance = new YourPackage();
+instance.init();</code></pre>
+                        </div>
+                        <div class="bg-obsidian-800 rounded-lg p-6">
+                            <h3 class="text-xl font-semibold text-white mb-4">Advanced Example</h3>
+                            <p class="text-obsidian-300 mb-4">Custom configuration with event listeners.</p>
+                            <pre class="text-obsidian-100"><code>const instance = new YourPackage({
+    option1: false,
+    option2: 'custom'
+});
+
+instance.on('event', (data) => {
+    console.log('Event triggered:', data);
+});</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ -->
+                <section id="faq" class="py-12" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <div class="bg-obsidian-800 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-white">How do I contribute to this project?</h3>
+                            <p class="text-obsidian-300 mt-2">Fork the repository on GitHub, make your changes, and submit a pull request. Make sure to follow the contribution guidelines.</p>
+                        </div>
+                        <div class="bg-obsidian-800 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-white">Is this project production ready?</h3>
+                            <p class="text-obsidian-300 mt-2">Yes, the project is stable and used in production by many companies. However, always test in your specific environment.</p>
+                        </div>
+                        <div class="bg-obsidian-800 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-white">How can I get support?</h3>
+                            <p class="text-obsidian-300 mt-2">Open an issue on GitHub or join our community Discord server for real-time support.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-obsidian-800 border-t border-obsidian-700 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-obsidian-300">&copy; 2023 Your Project. All rights reserved.</p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="https://github.com/yourusername" target="_blank" class="text-obsidian-300 hover:text-white">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" class="text-obsidian-300 hover:text-white">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="https://discord.gg/yourinvite" target="_blank" class="text-obsidian-300 hover:text-white">
+                            <i data-feather="message-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize feather icons
+        feather.replace();
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'light' || (!currentTheme && !prefersDarkScheme.matches)) {
+            document.documentElement.classList.remove('dark');
+            themeToggle.innerHTML = feather.icons['sun'].toSvg();
+        } else {
+            document.documentElement.classList.add('dark');
+            themeToggle.innerHTML = feather.icons['moon'].toSvg();
+        }
+
+        themeToggle.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = feather.icons['sun'].toSvg();
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = feather.icons['moon'].toSvg();
+            }
+        });
+
+        // Mobile menu toggle (you would need to implement this)
+        // const mobileMenuButton = document.getElementById('mobile-menu-button');
+        // const mobileMenu = document.getElementById('mobile-menu');
+        // mobileMenuButton.addEventListener('click', function() {
+        //     mobileMenu.classList.toggle('hidden');
+        // });
+    </script>
+</body>
+</html>
