@@ -65,9 +65,26 @@
             background: #475569;
             border-radius: 4px;
         }
+        #noscript-alert {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #dc3545;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body class="bg-obsidian-900 text-obsidian-100 min-h-screen font-mono">
+       <noscript>
+        <div id="noscript-alert">
+            <strong>WARNING:</strong> JavaScript is disabled. This website requires JavaScript to function properly.
+        </div>
+    </noscript><div id="main-content" class="hidden_main">
+      
     <div class="flex flex-col min-h-screen">
         <!-- Navigation -->
         <nav class="bg-obsidian-800 border-b border-obsidian-700 sticky top-0 z-50">
@@ -292,8 +309,13 @@ instance.on('event', (data) => {
             </div>
         </footer>
     </div>
+          </div>
 
     <script>
+
+           // Show content only if JavaScript is enabled
+        document.getElementById('main-content').classList.remove('hidden_main');
+        
         // Initialize AOS
         AOS.init({
             duration: 800,
